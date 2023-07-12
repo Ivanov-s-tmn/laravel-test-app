@@ -9,7 +9,6 @@
  - php artisan db:seed
  - php artisan serve
 
-
 ###### GET http://127.0.0.1:8000/offers получение объектов поборки с данными из БД
 
 ###### POST http://127.0.0.1:8000/api/v1/offers/items добавление нового элемента подборки
@@ -19,4 +18,3 @@
 ###### PUT http://127.0.0.1:8000/api/v1/offers/{offer} изменение подборки
 
 ###### http://localhost:8000/telescope/requests Для просмотра логов запросов через телескоп
-
