@@ -5,7 +5,7 @@
 
 # Deploy
 
- - vite
+ - npm run dev
  - php artisan db:seed
  - php artisan serve
 
