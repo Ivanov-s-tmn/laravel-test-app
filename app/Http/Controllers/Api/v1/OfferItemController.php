@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 
+use App\Models\Offer;
 use App\Models\OfferItem;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -14,8 +15,15 @@ class OfferItemController extends Controller
 
     public function store(Request $request): JsonResponse
     {
-        $validated = validate($request->all(), OfferItem::$rules);
+        //Идем за подборкой в БД по offer_id элемента подборки
+        $offer = Offer::where('id', $request->get('offer_id'))->first();
 
+        //Проверка статуса подборки
+        if ($offer->status != 'New') {
+            return response()->json('Offer status is not New', Response::HTTP_BAD_REQUEST);
+        }
+
+        $validated = validate($request->all(), OfferItem::$rules);
         $item = (new OfferItem)->fillAttributes($validated);
 
         $item->save();

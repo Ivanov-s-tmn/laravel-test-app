@@ -21,9 +21,9 @@ class OfferController extends Controller
         return response()->json($offer, Response::HTTP_CREATED);
     }
 
-    public function update(Request $request, $offerId): JsonResponse
+    public function update(Request $request, $id): JsonResponse
     {
-        $offer = Offer::where('id', $offerId)->first();
+        $offer = Offer::where('id', $id)->first();
 
         if(!$offer) {
             return response()->json('Offer does not exist', Response::HTTP_BAD_REQUEST);
