@@ -36,7 +36,6 @@ class OfferItem extends Model
 
     protected $casts = [
         'likes' => 'boolean',
-        'images' => 'array',
     ];
 
     public $timestamps = false;
