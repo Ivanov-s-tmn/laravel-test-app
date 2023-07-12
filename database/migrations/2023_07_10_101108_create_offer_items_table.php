@@ -11,13 +11,13 @@ return new class extends Migration {
             $table->id();
             $table->unsignedInteger('offer_id');
             $table->text('cid')->unique();
-            $table->string('type');
-            $table->unsignedDouble('square');
-            $table->string('price');
-            $table->string('complex');
-            $table->string('house');
-            $table->text('description');
-            $table->json('images');
+            $table->string('type')->nullable();
+            $table->unsignedDouble('square')->nullable();
+            $table->string('price')->nullable();
+            $table->string('complex')->nullable();
+            $table->string('house')->nullable();
+            $table->text('description')->nullable();
+            $table->json('images')->nullable();
             $table->boolean('likes')->default(false);
 
             $table->foreign('offer_id')->references('id')->on('offers');
@@ -26,8 +26,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        if (app()->isLocal()) {
             Schema::dropIfExists('offer_items');
-        }
     }
 };
